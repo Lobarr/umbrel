@@ -14,6 +14,7 @@ trap "sudo rm -f ${needrestart_conf_file}" EXIT
 # Default options
 BOOTSTRAPPED="false"
 PRINT_DOCKER_WARNING="true"
+PRINT_UMBREL_WARNING="true"
 UPDATE_APT="true"
 INSTALL_APT_DEPS="true"
 INSTALL_AVAHI="true"
@@ -35,6 +36,11 @@ then
 fi
 
 if [[ "${arguments}" = *"--no-docker-warning"* ]]
+then
+  PRINT_DOCKER_WARNING="false"
+fi
+
+if [[ "${arguments}" = *"--no-umbrel-warning"* ]]
 then
   PRINT_DOCKER_WARNING="false"
 fi
@@ -202,7 +208,7 @@ main() {
     exit
   fi
 
-  if [[ "${INSTALL_UMBREL}" = "true" ]]
+  if [[ "${PRINT_UMBREL_WARNING}" = "true" ]] && [[ "${INSTALL_UMBREL}" = "true" ]]
   then
     echo "About to install Umbrel in \"${UMBREL_INSTALL_PATH}\"."
     echo "If you would like to install somewhere else you can specify a custom location with:"
