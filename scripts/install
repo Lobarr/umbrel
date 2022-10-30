@@ -42,7 +42,7 @@ fi
 
 if [[ "${arguments}" = *"--no-umbrel-warning"* ]]
 then
-  PRINT_DOCKER_WARNING="false"
+  PRINT_UMBREL_WARNING="false"
 fi
 
 if [[ "${arguments}" = *"--no-install-avahi"* ]]
